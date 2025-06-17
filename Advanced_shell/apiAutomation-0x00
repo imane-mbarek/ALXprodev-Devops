@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Faire une requête vers l’API de Pikachu
+response=$(curl -s -w "%{http_code}" -o data.json https://pokeapi.co/api/v2/pokemon/pikachu)
+
+# Vérifier si la réponse est un succès (200)
+if [ "$response" -ne 200 ]; then
+    echo "Erreur : impossible de récupérer les données de Pikachu - Code HTTP $response" >> errors.txt
+fi
